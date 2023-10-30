@@ -223,6 +223,13 @@ hr {
   opacity: 0;
 }
 
+.popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 [role="dialog"] {
   position: fixed;
   z-index: 100;

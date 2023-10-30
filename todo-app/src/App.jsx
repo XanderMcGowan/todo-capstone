@@ -4,6 +4,7 @@ import { CustomForm } from './components/CustomForm';
 import { EditForm }from './components/EditForm'
 import  { TaskList } from './components/TaskList'
 import { Login } from './components/Login';
+import { Register } from './components/Register';
 
 
 
@@ -14,7 +15,10 @@ function App() {
   const [editedTask, setEditedTask] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [seen, setSeen] = useState(false)
+  const [formSeen, setFormSeen] = useState(false)
+  const [regSeen, setRegSeen] = useState(false)
   const [visible, setVisible] = useState(true);
+  const [regVisible, setRegVisible] = useState(true);
   const [username, setUserName] = useState("")
 
   const declareUserName = (username) => {
@@ -77,8 +81,28 @@ function App() {
     setSeen(!seen);
   };
 
+  const regRemoveElement = () => {
+    setRegVisible((prev) => !prev);
+    setRegSeen(!regSeen);
+  };
+
+  const regRemoveElementLogin = () => {
+    setRegVisible((prev) => !prev);
+  };
+
+
   function togglePop () {
     setSeen(!seen);
+
+};
+
+function regTogglePop () {
+  setRegSeen(!regSeen);
+
+};
+
+function displayForm () {
+  setFormSeen(!formSeen);
 
 };
 
@@ -97,26 +121,43 @@ async function getData (username){
 
   return (
     <div className="container">
-      <header>
+      <header className='popup'>
         <h1>My Task List</h1>
+        <button className='btn' type='submit' onClick={() => window.location.reload()}>Logout</button>
       </header>
+      <div>
+            {regVisible && (
+              <div className='popup'>
+                <h2>Register here first</h2>
+                <br />
+                <button className='btn' onClick={regRemoveElement}>Register</button>
+              </div>
+             )} 
+            {regSeen ? <Register
+            toggle={regTogglePop} /> : null}
+        </div>
 
       <div>
             {visible && (
-              <div>
-                <h1>Login to save your todos</h1>
+              <div className='popup'>
+                <h2>Login to save your todos</h2>
+                <br />
                 <button className='btn' onClick={removeElement}>Login</button>
               </div>
              )} 
             {seen ? <Login 
+            displayForm={displayForm}
             declareUserName={declareUserName}
             getData={getData}
+            regRemoveElementLogin={regRemoveElementLogin}
             toggle={togglePop} /> : null}
         </div>
       
-      <CustomForm 
+      {formSeen ?
+        <CustomForm 
       username={username}
-      addTask={addTask}/>
+      addTask={addTask}/> : null
+        }
       {
         isEditing && (
           <EditForm

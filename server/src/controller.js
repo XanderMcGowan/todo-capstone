@@ -54,7 +54,6 @@ let login = function (req, res) {
       console.log("error", username);
     } else if (results.length == 1) {
       storedHash = results[0].hash;
-      console.log(storedHash)
     }
 
     try {

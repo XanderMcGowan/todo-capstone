@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Login = (props) => {
+export const Register = (props) => {
   const [inputs, setInputs] = useState({});
 
   const handleChange = (e) => {
@@ -9,28 +9,26 @@ export const Login = (props) => {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  function handleLogin(e) {
+  function handleRegister(e) {
     e.preventDefault();
     console.log(inputs);
     props.toggle()
-      fetch("http://localhost:3306/login",{
+      fetch("http://localhost:3306/register",{
         method:'post',
         headers:{
           "Content-Type":"application/json"
         },
         body:JSON.stringify(inputs)
-      }).then(props.getData(inputs.username))
-      .then(props.declareUserName(inputs.username))
-      .then(props.displayForm()).then(props.regRemoveElementLogin())
+      })
   }
 
   return (
     <div className="popup">
       <div className="popup">
-        <h2>Login</h2>
+        <h2>Register</h2>
         <br />
-        <form className="popup" >
-          <label >
+        <form className="popup">
+          <label className="">
             Username:
             <input
         type="text" 
@@ -41,9 +39,9 @@ export const Login = (props) => {
             />
           </label>
           <br />
-          <label >
+          <label>
             Password:
-            <input 
+            <input
           type="text" 
           name="password" 
           value={inputs.password} 
@@ -52,14 +50,14 @@ export const Login = (props) => {
             />
           </label>
           <br />
-        </form>
-          <button className="btn" type="submit" onClick={handleLogin}>
-            Login
+        <button className="btn" type="submit" onClick={handleRegister}>
+            Register
           </button>
           <br />
         <button className="btn" onClick={props.toggle}>
           Close
         </button>
+        </form >
       </div>
     </div>
   );
