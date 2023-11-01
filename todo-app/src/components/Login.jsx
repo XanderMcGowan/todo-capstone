@@ -13,7 +13,7 @@ export const Login = (props) => {
     e.preventDefault();
     console.log(inputs);
     props.toggle()
-      fetch("http://localhost:3306/login",{
+      fetch("https://cool-forest-6744.fly.dev/login",{
         method:'post',
         headers:{
           "Content-Type":"application/json"

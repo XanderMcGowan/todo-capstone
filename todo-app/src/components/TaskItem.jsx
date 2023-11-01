@@ -20,7 +20,7 @@ const updateChecked = () => {
     checked: !isChecked
   }
   console.log(inputs)
-  fetch("http://localhost:3306/todos/"+task.id,{
+  fetch("https://cool-forest-6744.fly.dev/todos/"+task.id,{
     method:'put',
     headers:{
       "Content-Type":"application/json"

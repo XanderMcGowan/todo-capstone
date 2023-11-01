@@ -31,7 +31,7 @@ function App() {
 
   const deleteTask = (id) => {
     setTasks(prevState => prevState.filter(t => t.id !== id));
-    fetch("http://localhost:3306/todos/"+id,{
+    fetch("https://cool-forest-6744.fly.dev/todos/"+id,{
       method:'DELETE'
     })
   }
@@ -55,7 +55,7 @@ function App() {
 
     }
     console.log(inputs)
-    fetch("http://localhost:3306/todos/"+task.id,{
+    fetch("https://cool-forest-6744.fly.dev/todos/"+task.id,{
       method:'post',
       headers:{
         "Content-Type":"application/json"
@@ -108,7 +108,7 @@ function displayForm () {
 
 async function getData (username){
 
-  const url = "http://localhost:3306/todos/" + username
+  const url = "https://cool-forest-6744.fly.dev/todos/" + username
 
   const response = await fetch(url) 
 

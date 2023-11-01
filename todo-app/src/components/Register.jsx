@@ -13,7 +13,7 @@ export const Register = (props) => {
     e.preventDefault();
     console.log(inputs);
     props.toggle()
-      fetch("http://localhost:3306/register",{
+      fetch("https://cool-forest-6744.fly.dev/register",{
         method:'post',
         headers:{
           "Content-Type":"application/json"

@@ -18,7 +18,7 @@ export const CustomForm = ({ addTask, username }) => {
     }
     addTask(inputs)
     setTask("")
-    fetch("http://localhost:3306/todos",{
+    fetch("https://cool-forest-6744.fly.dev/todos",{
         method:'post',
         headers:{
           "Content-Type":"application/json"
