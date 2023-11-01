@@ -122,7 +122,7 @@ async function getData (username){
   return (
     <div className="container">
       <header className='popup'>
-        <h1>My Task List</h1>
+        <h1>My Todo List</h1>
         <button className='btn' type='submit' onClick={() => window.location.reload()}>Logout</button>
       </header>
       <div>
